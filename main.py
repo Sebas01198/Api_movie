@@ -15,6 +15,7 @@ from routers.movie_cast import movie_cast_router
 from routers.rating import rating_router
 from routers.reviewer import reviewer_router
 from routers.movie_genres import movie_genres_router
+from routers.genres import genres_router
 
 app = FastAPI()
 app.title = "Mi app con FastAPI"
@@ -28,6 +29,7 @@ app.include_router(movie_cast_router)
 app.include_router(rating_router)
 app.include_router(reviewer_router)
 app.include_router(movie_genres_router)
+app.include_router(genres_router)
 
 
 

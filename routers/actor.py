@@ -23,3 +23,12 @@ def create_actor(actor:Actor) ->dict:
     ActorService(db).create_actor(actor)
     return JSONResponse(content={'message':'actor save in data base'})
 
+@actor_router.put('/actors{id}',tags=['actors'])
+def update_actor(id:int,actor:Actor):
+    db =  Session
+    result = ActorService(db).update_actor(id)
+    if not result:
+        return JSONResponse(content={"message":"No se ha encontrado el registro","status_code":"404"})
+    ActorService(db).update_actor(id,actor)
+    return JSONResponse(content={"message":"Se ha modificado el movie genre con id: {id}"})
+

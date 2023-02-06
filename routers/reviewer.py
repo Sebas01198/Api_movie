@@ -22,3 +22,12 @@ def create_actor(reviewer:Reviewer) ->dict:
     db= Session()
     ReviewerService(db).create_reviewer(reviewer)
     return JSONResponse(content={'message':'reviewer save in data base'})
+
+@reviewer_router.put('/reviewers{id}',tags=['reviewers'])
+def update_genres(id:int,reviewer:Reviewer):
+    db =  Session
+    result = ReviewerService(db).update_genres(id)
+    if not result:
+        return JSONResponse(content={"message":"No se ha encontrado el registro","status_code":"404"})
+    ReviewerService(db).update_genres(id,reviewer)
+    return JSONResponse(content={"message":"Se ha modificado el movie genre con id: {id}"})

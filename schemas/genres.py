@@ -2,7 +2,7 @@ from typing import Optional
 from pydantic import BaseModel, Field
 
 
-class Actor(BaseModel):
+class Genres(BaseModel):
         gen_id:int
         gen_title:str
 

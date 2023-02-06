@@ -22,3 +22,12 @@ def create_actor(rating:Rating) ->dict:
     db= Session()
     RatingService(db).create_rating(rating)
     return JSONResponse(content={'message':'rating save in data base'})
+
+@rating_router.put('/ratings{id}',tags=['ratings'])
+def update_genres(id:int,rating:Rating):
+    db =  Session
+    result = RatingService(db).update_genres(id)
+    if not result:
+        return JSONResponse(content={"message":"No se ha encontrado el registro","status_code":"404"})
+    RatingService(db).update_genres(id,rating)
+    return JSONResponse(content={"message":"Se ha modificado el movie genre con id: {id}"})

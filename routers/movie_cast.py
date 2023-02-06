@@ -27,3 +27,12 @@ def create_cast(cast:MovieCast)->dict:
     db = Session()
     MovieCastService(db).create_movie_cast(cast)
     return JSONResponse(content={"message":"Se ha registrado el actor","status_code":201})
+
+@movie_cast_router.put('/cast{id}',tags=['cast'])
+def update_cast(id:int,cast:MovieCast):
+    db =  Session
+    result = MovieCastService(db).update_cast(id)
+    if not result:
+        return JSONResponse(content={"message":"No se ha encontrado el registro","status_code":"404"})
+    MovieCastService(db).update_cast(id,cast)
+    return JSONResponse(content={"message":"Se ha modificado el movie genre con id: {id}"})
